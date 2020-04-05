@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block main %}
+{% if user.is_authenticated %}
+
+<div class="card text-center">
+                <span class="d-block p-2 bg-primary text-white">GO System Academia </span>
+            </div>
+            <div class="card text-center text-white bg-secondary mb-5" >
+                <h2>Relatório contas a receber Inadimplentes</h2>
+            </div>
+
+<div class="container">
+      <div class="card">
+         <div class="card-body">
+           <div class="row">
+                <div class="col-4">
+                    <spam>Nome</spam>
+                </div>
+                <div class="col-2">
+                    <span>Cpf</span>
+                </div>
+                <div class="col-2">
+                    <span>Telefone</span>
+                </div>
+                <div class="col-2">
+                    <span>Vencimento</span>
+                </div>
+                 <div class="col-2">
+                     <span>Detahes</span>
+                </div>
+            </div>
+         </div>
+       </div>
+     </div>
+
+
+{% for pagamento in object_list|dictsort:"vencimento" %}
+{% if pagamento.status == '2' %}
+
+    <div class="container">
+      <div class="card">
+         <div class="card-body">
+           <div class="row">
+                <div class="col-4">
+                 {{pagamento.aluno.nome }}
+                </div>
+                <div class="col-2">
+                 {{pagamento.aluno.cpf}}
+                </div>
+                <div class="col-2">
+                 {{pagamento.aluno.telefone}}
+                </div>
+                <div class="col-2">
+                 {{ pagamento.vencimento }}
+                </div>
+                 <div class="col-2">
+                    <a href="{% url 'dados' pagamento.aluno.id %}"><i class="glyphicon glyphicon-list"></i></a>
+                </div>
+
+            </div>
+         </div>
+       </div>
+     </div>
+
+{% endif %}
+{% endfor %}
+
+    <div class="col-sm text-center">
+        {% block pagination %}
+        {% if is_paginated %}
+            <div class="pagination">
+                <span class="page-links">
+                    {% if page_obj.has_previous %}
+                        <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">Anterior</a>
+                    {% endif %}
+                    <span class="page-current">
+                        Página {{ page_obj.number }} a {{ page_obj.paginator.num_pages }}.
+                    </span>
+                    {% if page_obj.has_next %}
+                        <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">Próxima</a>
+                    {% endif %}
+                </span>
+            </div>
+
+        {% endif %}
+        {% endblock %}
+    </div>
+    <br>
+
+        <div class="col-sm text-right">
+            <p>
+                <a href="{% url 'csv' %}" class="btn btn-info btn-lg">
+                  <span class="glyphicon glyphicon-export"></span> Exportar CSV
+                </a>
+                <a href="{% url 'excel' %}" class="btn btn-info btn-lg">
+                  <span class="glyphicon glyphicon-export"></span> Exportar Excel
+                </a>
+            </p>
+
+
+            <div class="col-sm text-left">
+              <a class="badge badge-secondary"href="{% url 'home' %}"><i class="glyphicon glyphicon-log-out"></i>  Voltar</a>
+
+            </div>
+
+        </div>
+    {% else %}
+              <p>É necessário LOGAR!</p>
+    {% endif %}
+
+
+{% endblock %}
+

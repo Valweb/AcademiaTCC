@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block main %}
+{% if user.is_authenticated %}
+
+<div class="card text-center">
+                <span class="d-block p-2 bg-primary text-white">GO System Academia </span>
+            </div>
+            <div class="card text-center text-white bg-secondary mb-5" >
+                <h2>Cadastro do  Aluno</h2>
+            </div>
+
+            <div class="container">
+
+
+                <div class="card">
+                    <div class="row">
+                    <div class="col-2">
+                        <p>Matricula nº:</p>
+                    </div>
+                    <div  class="col">
+                        <P>{{ aluno.matricula }}</p>
+                    </div>
+                     </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="row">
+                    <div class="col-2">
+                        <p>Nome:</p>
+                    </div>
+                    <div  class="col">
+                        <P>{{ aluno.nome }}</p>
+                    </div>
+                     </div>
+                </div>
+
+                <div class="card">
+                    <div class="row">
+                    <div class="col-2">
+                        <p>CPF:</p>
+                    </div>
+                    <div  class="col">
+                        <P>{{aluno.cpf }}</p>
+                    </div>
+                     </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="row">
+                    <div class="col-2">
+                        <p>Identidade:</p>
+                    </div>
+                    <div  class="col">
+                        <P>{{aluno.identidade }}</p>
+                    </div>
+                     </div>
+                </div>
+
+                <div class="card">
+                    <div class="row">
+                    <div class="col-2">
+                        <p>Telefone:</p>
+                    </div>
+                    <div  class="col">
+                        <P>{{aluno.telefone }}</p>
+                    </div>
+                     </div>
+                </div>
+
+                <div class="card">
+                    <div class="row">
+                    <div class="col-2">
+                        <p>Endereço:</p>
+                    </div>
+                    <div  class="col">
+                        <P>{{aluno.endereco}}</p>
+                    </div>
+                     </div>
+                </div>
+
+                <div class="card">
+                    <div class="row">
+                    <div class="col-2">
+                        <p>Cidade:</p>
+                    </div>
+                    <div  class="col">
+                        <P>{{aluno.cidade}}</p>
+                    </div>
+                     </div>
+                </div>
+
+                <div class="card">
+                    <div class="row">
+                    <div class="col-2">
+                        <p>Estado:</p>
+                    </div>
+                    <div  class="col">
+                        <P>{{aluno.estado}}</p>
+                    </div>
+                     </div>
+                </div>
+
+                 <div class="card">
+                    <div class="row">
+                    <div class="col-2">
+                        <p>Cidade:</p>
+                    </div>
+                    <div  class="col">
+                        <P>{{aluno.cidade}}</p>
+                    </div>
+                     </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="row">
+                    <div class="col-2">
+                        <p>Email:</p>
+                    </div>
+                    <div  class="col">
+                        <P>{{aluno.email}}</p>
+                    </div>
+                     </div>
+                </div>
+
+                <div class="card">
+                    <div class="row">
+                    <div class="col-2">
+                        <p>Codigo Plano:</p>
+                    </div>
+                    <div  class="col">
+                        <P>{{aluno.plano}}</p>
+                    </div>
+                     </div>
+                </div>
+
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+                            <p><a class="badge badge-secondary"href="{% url 'list_pagamentos' %}"><i class="glyphicon glyphicon-log-out"></i>Voltar</a></p>
+
+                        </div>
+                   </div>
+               </div>
+
+{% endif %}
+{% endblock %}
+

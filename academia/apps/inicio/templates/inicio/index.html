@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block main %}
+
+
+<div class="container">
+      <div class="card text-center">
+       <span class="d-block p-2 bg-primary text-white">GO System Academia </span>
+      </div>
+          <div class="card">
+          <div class="card-header">
+            Usuário: {{user.username}}
+          </div>
+          </div>
+          <div class="col-sm">
+          <div class="row">
+
+          <div class="card" style="width: 100rem;">
+
+           {% if user.username == 'Recepcionista' %}
+             <ul class="list-group">
+
+               <a class="list-group-item" href="{% url 'lista' %}"><i class="glyphicon glyphicon-user"></i>  Alunos</a>
+               <a class="list-group-item" href=""><i class="glyphicon glyphicon-user"></i>  Funcionários</a>
+               <a class="list-group-item" href=""><i class="glyphicon glyphicon-usd"></i>   Financeiro</a>
+               <a class="list-group-item" href=""><i class="glyphicon glyphicon-time"></i>  Aulas</a>
+               <a class="list-group-item" href=""><i class="glyphicon glyphicon-check"></i>   Avaliações</a>
+               <a class="list-group-item" href=""><i class="glyphicon glyphicon-lock"></i>  Permissões</a>
+                  <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                        <i class="glyphicon glyphicon-list-alt"></i>  Relatorios  </button>
+                            <ul class="dropdown-menu">
+                               <li><a class="list-group-item" href="{% url 'list_pagamentos'%}">Alunos Inadimplentes</a></li>
+                               <li><a class="list-group-item" href="{% url 'list_alunos'%}">Relatorio de alunos matriculados</a></li>
+                               <li><a class="list-group-item" href="#">Relatório de Aulas</a></li>
+                               <li><a class="list-group-item" href="#">Relatório de Funcionários</a></li>
+                               <li><a class="list-group-item" href="#">Relatório de Avaliações físicas</a></li>
+                            </ul>
+                  </div>
+
+               <a class="list-group-item" href="{% url 'logout' %}"><i class="glyphicon glyphicon-off"></i>  Sair</a>
+
+            {% elif user.username == 'Gerencia' %}
+
+              <a class="list-group-item" href="{% url 'list_pagamentos'%}"><i class="glyphicon glyphicon-list-alt"></i> Relatório Inadimplentes</a>
+              <a class="list-group-item" href="{% url 'list_alunos'%}"><i class="glyphicon glyphicon-list-alt"></i>  Relatorio de alunos matriculados</a>
+              <a class="list-group-item" href="{% url 'logout' %}"><i class="glyphicon glyphicon-off"></i>  Sair</a>
+
+            {% else %}
+
+              <a class="list-group-item" href=""><i class="glyphicon glyphicon-time"></i>  Aulas</a>
+              <a class="list-group-item" href=""><i class="glyphicon glyphicon-check"></i> Avaliações</a>
+              <a class="list-group-item" href=""><i class="glyphicon glyphicon-check"></i> Informações Financeiras</a>
+              <a class="list-group-item" href=""><i class="glyphicon glyphicon-check"></i> Notificações</a>
+              <a class="list-group-item" href="{% url 'logout' %}"><i class="glyphicon glyphicon-off"></i> Sair</a>
+
+            {% endif %}
+
+            </ul>
+          </div>
+          <div class="col-sm">
+
+          </div>
+    </div>
+
+ </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+          <div class="container-fluid">
+              <div class="card text-center" >
+                <span class="p-3 mb-2 bg-dark text-white">Desenvolvimento WEB Django & Python - TCC Valéria França - PUC Minas</span>
+              </div>
+          </div>
+    </footer>
+{% endblock %}

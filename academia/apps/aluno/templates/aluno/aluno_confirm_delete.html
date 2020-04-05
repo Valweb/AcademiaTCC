@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block main %}
+{% if user.is_authenticated %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="container">
+             <div class="alert alert-info" role="alert">
+                <strong> <div class="alert-link">Confirma exclução deste Aluno {{ obj }}?</div></strong>
+             </div>
+            <button type="submit" class="btn btn-danger">Confirmar</button>
+            <button type="button" class="btn btn-info"><a href="{% url 'home' %}"> Cancelar </a></button>
+
+    </div>
+
+</form>
+<div class="container">
+          <div class="row">
+            <div class="col-sm">
+
+            </div>
+            <div class="col-sm">
+
+            </div>
+            <div class="col-sm text-right">
+                <a class="badge badge-secondary"href="{% url 'home' %}"><i class="glyphicon glyphicon-log-out"></i> Voltar</a>
+            </div>
+          </div>
+        </div>
+{% else %}
+    <p>É necessário LOGAR!</p>
+{% endif %}
+{% endblock %}

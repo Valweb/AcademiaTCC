@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block main %}
+{% if user.is_authenticated %}
+            <div class="card text-center">
+                <span class="d-block p-2 bg-primary text-white">GO System Academia </span>
+            </div>
+            <div class="card text-center text-white bg-secondary mb-5" >
+                <h2>Dados do  Aluno</h2>
+            </div>
+
+            <div class="container">
+               <form method="POST">
+                {% csrf_token %}
+                {{form}}
+
+               </form>
+            </div>
+
+            <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <a class="badge badge-secondary"href="{% url 'list_pagamentos' %}"><i class="glyphicon glyphicon-log-out"></i>  Voltar</a>
+            </div>
+            <div class="col-sm">
+
+            </div>
+
+          </div>
+        </div>
+
+{% else %}
+   <p>É necessário LOGAR!</p>
+{% endif %}
+{% endblock %}

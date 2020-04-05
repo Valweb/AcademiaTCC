@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% block main %}
+
+<div class="container-fluid">
+      <div class="card text-center" >
+       <span class="d-block p-2 bg-primary text-white">GO System Academia </span>
+      </div>
+          <div class="card text-left">
+               <form method="post">
+                   <div class="p-6 mb-2 bg-dark text-white">
+                       <div class="col py-3 px-md-5">
+                       {%  csrf_token %}
+                       {{form|bootstrap}}
+                       </div>
+
+                       <div class="col py-5 px-md-5">
+                           <span>
+                               <button type="submit"  class="btn btn-info btn-lg btn-block "> Login </button>
+                           </span>
+                       </div>
+
+                   </div>
+
+
+                   <div id="formFooter" class="card text-center">
+                       <span class="p-3 mb-2 bg-light "><a class="underlineHover" href="{% url 'password_reset' %}">Esqueci a senha</a></span>
+                    </div>
+               </form>
+          </div>
+</div>
+
+ </div>
+{% endblock %}
+
+
+
+
+
+
+# crsf token proteçao para o form
